@@ -20,6 +20,7 @@ useSeoMeta({
   description: () => `${post.value?.excerpt}`,
   ogTitle: () => `${post.value?.title} | Dev Blog`,
   ogDescription: () => `${post.value?.excerpt}`,
+  ogImage: () => `${post.value?.image}`,
 });
 </script>
 
