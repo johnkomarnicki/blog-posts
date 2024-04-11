@@ -1,4 +1,4 @@
-export interface Post {
+export type Post = {
   id?: string;
   image?: string;
   title?: string;
@@ -6,14 +6,14 @@ export interface Post {
   excerpt?: string;
   userId?: string;
   publishedAt?: number;
-}
+};
 
-export interface User {
+export type User = {
   id?: string;
   firstName?: string;
   lastName?: string;
   email?: string;
   avatar?: string;
-}
+};
 
 export type PostWithUser = Post & { user: User };

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PostWithUser } from "@/types";
+import { type PostWithUser } from "@/types/index";
 
 const router = useRouter();
 const route = useRoute();
@@ -18,7 +18,7 @@ async function getPosts() {
   });
   // increment offset for infinite pagination
   offset.value += limit.value;
-  return res;
+  return res as PostWithUser[];
 }
 
 async function updatePostOrder(event: Event) {
@@ -54,10 +54,9 @@ onMounted(() => {
   loadPaginatedData();
 });
 
-// Fetch data
-const { data: posts, error } = await useAsyncData(
+const { data: posts, error } = await useAsyncData<PostWithUser[]>(
   "blog-posts",
-  async (): Promise<PostWithUser[]> => {
+  async () => {
     return await getPosts();
   },
   {
